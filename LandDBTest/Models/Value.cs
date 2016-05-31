@@ -11,7 +11,6 @@ namespace LandDBTest.Models
 {
     using System;
     using System.Collections.Generic;
-    using PagedList;
     
     public partial class Value
     {
