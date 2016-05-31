@@ -1,0 +1,114 @@
+﻿@model PagedList.IPagedList<LandDBTest.Models.Value> 
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search for Comparable Values per Village and Block </h2>
+
+<p>
+  @*  @Html.ActionLink("Create New", "Create") *@
+</p>
+@using (Html.BeginForm("Index", "Values", FormMethod.Get))
+{
+    <p class="form-inline">
+        Search for a Village: @Html.TextBox("vill_search", ViewBag.FilterValue as string, new { placeholder=ViewBag.FilterValue })
+        Block Number: @Html.TextBox("block", ViewBag.CurrentSortOrder as string, new { placeholder = ViewBag.CurrentSortOrder })
+       
+            <input type="submit" value="Find" />
+      
+    </p>
+
+}
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+
+
+<table class="table">
+    <tr>
+        <th>
+            Village
+        
+        </th>
+        <th>
+           Block
+        </th>
+        <th>
+          District
+        </th>
+        <th>
+      County
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+           Acreage
+        </th>
+        <th>
+          Use Value
+        </th>
+        <th>
+          Current Fair Value
+        </th>
+        <th>
+          Tenure
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.village)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.block)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.district)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.county)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user)
+          
+        </td>
+      
+       
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.acreage)
+        </td>
+        <td>
+   @string.Format("{0:#,##0}", item.use_value)
+        </td>
+        <td>
+            @string.Format("{0:#,##0}", item.fair_value)
+          
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.tenure)
+        </td>
+   @*     <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+    </td>
+*@
+    </tr>
+    }
+
+   
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+
+

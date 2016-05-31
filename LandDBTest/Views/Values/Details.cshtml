@@ -1,0 +1,91 @@
+﻿@model LandDBTest.Models.Value
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Value</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tenure
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenure)
+        </dd>
+        <dt>
+         Village
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.village)
+        </dd>
+
+        <dt>
+           Block
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.block)
+        </dd>
+
+        <dt>
+          District
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.district)
+        </dd>
+
+        <dt>
+       County
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.county)
+        </dd>
+        <dt>
+            Acreage
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.acreage)
+        </dd>
+        <dt>
+           User
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.user)
+        </dd>
+
+        <dt>
+          Use Value
+        </dt>
+
+        <dd>
+          @string.Format("{0:#,##0}", Model.use_value)
+        </dd>
+
+        <dt>
+            Current Fair Value
+        </dt>
+
+        <dd>
+           @string.Format("{0:#,##0}", Model.fair_value)
+        </dd>
+
+        
+
+    
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
