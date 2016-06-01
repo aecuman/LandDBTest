@@ -1,114 +1,165 @@
 ﻿@model PagedList.IPagedList<LandDBTest.Models.Value> 
 @using PagedList.Mvc
 @{
-    ViewBag.Title = "Index";
-}
+        ViewBag.Title = "Index";
+    }
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#find').click(function() {
+            var vilSearch = $('#vill_search').val();
+            var blockSearch = $('#block').val();
+            $('#err').remove();
+            $('#err2').remove();
+            if (vilSearch == "") {
+                $('#vill_search').after("<p id='err' style='color:red;'></p>");
+                $('#err').html("* Fill this field first").show().fadeOut(2500);
+                $('#block').after("<p id='err2' style='color:red;'></p>");
+                $('#err2').html("* then this field next").show().delay(1500).fadeOut(1500);
+                return false;
+            }
+            
+        });
+        $('#block').keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $('#err2').html("Digits Only").show().fadeOut("slow");
+           
+                return false;
+            }
+        });
+    });
+</script>
 
-<h2>Search for Comparable Values per Village and Block </h2>
+<div class="jumbotron" style="text-align:center">
+    <h2>Uganda Property Reference</h2>
+    <h3>Find Out land Values and Future Infrastructure Projects in your Village.</h3>
+    <h5>Search for Comparable Values per Village and Block </h5>
+</div>
+
+
 
 <p>
   @*  @Html.ActionLink("Create New", "Create") *@
 </p>
 @using (Html.BeginForm("Index", "Values", FormMethod.Get))
 {
-    <p class="form-inline">
-        Search for a Village: @Html.TextBox("vill_search", ViewBag.FilterValue as string, new { placeholder=ViewBag.FilterValue })
-        Block Number: @Html.TextBox("block", ViewBag.CurrentSortOrder as string, new { placeholder = ViewBag.CurrentSortOrder })
-       
-            <input type="submit" value="Find" />
+    <div class="form-inline">
+
+        <div class="form-group">
+            <label class="control-label col-md-6"> Search for a Village</label>
+            <div class="col-md-6">
+                @Html.TextBox("vill_search", ViewBag.FilterValue as string, new { placeholder = ""})
+              
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">   Block Number:</label>
+            <div class="col-md-6">
+                @Html.TextBox("block", ViewBag.blockFilter as string, new { placeholder = "", @value=1})
       
-    </p>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" id="find"  class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
 
 }
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, Page_No => Url.Action("Index",
-    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
+    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue,block = ViewBag.blockFilter
+            }))
 
 
-<table class="table">
-    <tr>
-        <th>
-            Village
-        
-        </th>
-        <th>
-           Block
-        </th>
-        <th>
-          District
-        </th>
-        <th>
-      County
-        </th>
-        <th>
-            User
-        </th>
-        <th>
-           Acreage
-        </th>
-        <th>
-          Use Value
-        </th>
-        <th>
-          Current Fair Value
-        </th>
-        <th>
-          Tenure
-        </th>
-        
-        <th></th>
-    </tr>
+            <table class="table">
+                <tr>
+                    <th>
+                        Village
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.village)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.block)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.district)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.county)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.user)
-          
-        </td>
-      
-       
-      
-        <td>
-            @Html.DisplayFor(modelItem => item.acreage)
-        </td>
-        <td>
-   @string.Format("{0:#,##0}", item.use_value)
-        </td>
-        <td>
-            @string.Format("{0:#,##0}", item.fair_value)
-          
-        </td>
-      
-        <td>
-            @Html.DisplayFor(modelItem => item.tenure)
-        </td>
-   @*     <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-*@
-    </tr>
-    }
+                    </th>
+                    <th>
+                        Block
+                    </th>
+                    <th>
+                        District
+                    </th>
+                    <th>
+                        County
+                    </th>
+                    <th>
+                        User
+                    </th>
+                    <th>
+                        Acreage
+                    </th>
+                    <th>
+                        Use Value
+                    </th>
+                    <th>
+                        Current Fair Value
+                    </th>
+                    <th>
+                        Tenure
+                    </th>
 
-   
-</table>
-<br />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-@Html.PagedListPager(Model, Page_No => Url.Action("Index",
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.village)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.block)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.district)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.county)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user)
+
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.acreage)
+                        </td>
+                        <td>
+                            @string.Format("{0:#,##0}", item.use_value)
+                        </td>
+                        <td>
+                            @string.Format("{0:#,##0}", item.fair_value)
+
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tenure)
+                        </td>
+                        @*     <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        *@
+                    </tr>
+                }
+
+
+            </table>
+            <br />
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("Index",
     new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
 
 

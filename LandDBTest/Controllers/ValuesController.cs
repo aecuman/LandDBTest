@@ -13,49 +13,63 @@ namespace LandDBTest.Controllers
     {
         private landdbContainer db = new landdbContainer();
 
-       
-        // GET: Values
-    [HttpGet]
-        public ActionResult Index(float? block, string vill_search, string county, string sortVal,string Filter_Value, int? Page_No)
-        {
-            ViewBag.CurrentSortOrder = block;          
-            if (vill_search != null)
-            {
-                Page_No = 1;
-            }
-            else
-            {
-                vill_search = Filter_Value;
-                ViewBag.FilterValue = vill_search;
-            }
 
-            ViewBag.FilterValue = vill_search;
+        // GET: Values
+      
+        public ActionResult Index(int? block, string vill_search, string county, string sortVal, string Filter_Value, int? Page_No)
+        {
+         
+            
+                ViewBag.CurrentSortOrder = block;
+            ViewBag.blockFilter = block;
+
+            if (vill_search != null)
+                {
+
+                    Page_No = 1;
+                }
+                else
+                {
+                vill_search = Filter_Value;
+                
+                
+                 ViewBag.FilterValue = vill_search;
+                ViewBag.blockFilter = block;
+                }
+
+                ViewBag.FilterValue = vill_search;
+            ViewBag.blockFilter = block;
+
             var val = from s in db.Values
                       select s;
+
             if (!String.IsNullOrEmpty(vill_search)|| block!=null)
-            {
-                val = val.Where(v => v.village.Contains(vill_search)|| v.block.ToString().Contains(block.ToString()));               
-            }
-            switch (sortVal)
-            {
-                case "district":
-                    val = val.OrderByDescending(stu => stu.district);
-                    break;
-                case "tenure":
-                    val = val.OrderBy(stu => stu.tenure);
-                    break;
-                
-                default:
-                    val = val.OrderBy(stu => stu.Id);
-                    break;
-            }
+                {
 
-            int Size_Of_Page = 10;
-            int No_Of_Page = (Page_No ?? 1);
-            return View(val.ToPagedList(No_Of_Page, Size_Of_Page));
+                val = val.Where(v => v.village.Contains(vill_search)|| v.block.ToString().Contains(block.ToString()));
+               // val=val.Where(v=> v.block.ToString().Contains(block.ToString()));
+                }
+                switch (sortVal)
+                {
+                    case "district":
+                        val = val.OrderByDescending(stu => stu.district);
+                        break;
+                    case "tenure":
+                        val = val.OrderBy(stu => stu.tenure);
+                        break;
 
-         
-        }
+                    default:
+                        val = val.OrderBy(stu => stu.Id);
+                        break;
+                }
+
+                int Size_Of_Page = 10;
+                int No_Of_Page = (Page_No ?? 1);
+                return View(val.ToPagedList(No_Of_Page, Size_Of_Page));
+
+            }
+        
+        
 
         // GET: Values/Details/5
         public ActionResult Details(int? id)
