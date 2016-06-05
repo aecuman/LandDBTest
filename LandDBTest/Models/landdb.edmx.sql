@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/24/2016 18:13:05
--- Generated from EDMX file: c:\users\mokure\documents\visual studio 2015\Projects\LandDBTest\LandDBTest\Models\landdb.edmx
+-- Date Created: 06/05/2016 06:53:56
+-- Generated from EDMX file: C:\Users\mokure\Documents\Visual Studio 2015\Projects\LandDBTest\LandDBTest\Models\landdb.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -33,15 +33,14 @@ GO
 -- Creating table 'Values'
 CREATE TABLE [dbo].[Values] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [tenure] nvarchar(max)  NOT NULL,
-    [block] float  NOT NULL,
-    [district] nvarchar(max)  NOT NULL,
-    [county] nvarchar(max)  NOT NULL,
-    [acreage] float  NOT NULL,
-    [use_value] nvarchar(max)  NOT NULL,
-    [fair_value] nvarchar(max)  NOT NULL,
-    [village] nvarchar(max)  NOT NULL,
-    [user] nvarchar(max)  NOT NULL
+    [village] nvarchar(max)  NULL,
+    [block] float  NULL,
+    [county] nvarchar(max)  NULL,
+    [acreage] float  NULL,
+    [fair_value] float  NULL,
+    [user] nvarchar(max)  NULL,
+    [tenure] nvarchar(max)  NULL,
+    [period] datetime  NOT NULL
 );
 GO
 

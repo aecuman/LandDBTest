@@ -29,14 +29,14 @@
         });
     });
 </script>
-
+<!--
 <div class="jumbotron" style="text-align:center">
     <h2>Uganda Property Reference</h2>
     <h3>Find Out land Values and Future Infrastructure Projects in your Village.</h3>
     <h5>Search for Comparable Values per Village and Block </h5>
 </div>
 
-
+-->
 
 <p>
   @*  @Html.ActionLink("Create New", "Create") *@
@@ -72,8 +72,8 @@
 }
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
             @Html.PagedListPager(Model, Page_No => Url.Action("Index",
-    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue,block = ViewBag.blockFilter
-            }))
+    new { Page_No, sortVal = ViewBag.SortingDate, Filter_Value = ViewBag.FilterValue,block = ViewBag.blockFilter
+    }))
 
 
             <table class="table">
@@ -85,9 +85,7 @@
                     <th>
                         Block
                     </th>
-                    <th>
-                        District
-                    </th>
+                   
                     <th>
                         County
                     </th>
@@ -98,15 +96,16 @@
                         Acreage
                     </th>
                     <th>
-                        Use Value
-                    </th>
-                    <th>
                         Current Fair Value
                     </th>
+                  
                     <th>
                         Tenure
                     </th>
-
+                    <th>
+                        @Html.ActionLink("order", "Index", new { sortVal = ViewBag.SortingDate, Filter_Value = ViewBag.FilterValue })
+                        Period
+                    </th>
                     <th></th>
                 </tr>
 
@@ -119,9 +118,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.block)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.district)
-                        </td>
+                        
                         <td>
                             @Html.DisplayFor(modelItem => item.county)
                         </td>
@@ -135,9 +132,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.acreage)
                         </td>
-                        <td>
-                            @string.Format("{0:#,##0}", item.use_value)
-                        </td>
+                      
                         <td>
                             @string.Format("{0:#,##0}", item.fair_value)
 
@@ -145,6 +140,10 @@
 
                         <td>
                             @Html.DisplayFor(modelItem => item.tenure)
+                        </td>
+                        <td>
+                            @item.period.ToString("dd - MM - yyyy")
+                           
                         </td>
                         @*     <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
@@ -160,6 +159,6 @@
             <br />
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
             @Html.PagedListPager(Model, Page_No => Url.Action("Index",
-    new { Page_No, Sorting_Order = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
+    new { Page_No, sortVal = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue }))
 
 

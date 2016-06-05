@@ -20,8 +20,9 @@ namespace LandDBTest.Controllers
         {
          
             
-                ViewBag.CurrentSortOrder = block;
+            ViewBag.CurrentSortOrder = sortVal;
             ViewBag.blockFilter = block;
+            ViewBag.SortingDate = sortVal == "Date_" ? "Date_desce" : "Date_";
 
             if (vill_search != null)
                 {
@@ -36,29 +37,31 @@ namespace LandDBTest.Controllers
                  ViewBag.FilterValue = vill_search;
                 ViewBag.blockFilter = block;
                 }
-
+          
                 ViewBag.FilterValue = vill_search;
-            ViewBag.blockFilter = block;
-
+     
             var val = from s in db.Values
                       select s;
 
             if (!String.IsNullOrEmpty(vill_search)|| block!=null)
                 {
 
-                val = val.Where(v => v.village.Contains(vill_search)|| v.block.ToString().Contains(block.ToString()));
+                val = val.Where(v => v.village.Contains(vill_search));
+                if (block != null) { val = val.Where(v => v.block.ToString().Contains(block.ToString())); }
                // val=val.Where(v=> v.block.ToString().Contains(block.ToString()));
                 }
                 switch (sortVal)
                 {
-                    case "district":
-                        val = val.OrderByDescending(stu => stu.district);
-                        break;
-                    case "tenure":
-                        val = val.OrderBy(stu => stu.tenure);
+                   
+                    case "Date_":
+                        val = val.OrderBy(stu => stu.period);
                         break;
 
-                    default:
+                case "Date_desce":
+                    val = val.OrderByDescending(stu => stu.period);
+                    break;
+
+                default:
                         val = val.OrderBy(stu => stu.Id);
                         break;
                 }
@@ -129,7 +132,7 @@ namespace LandDBTest.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,tenure,block,district,county,acreage,use_value,fair_value,village,user")] Value value)
+        public ActionResult Edit([Bind(Include = "Id,tenure,block,county,acreage,use_value,fair_value,village,user,period")] Value value)
         {
             if (ModelState.IsValid)
             {
