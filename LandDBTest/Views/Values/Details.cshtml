@@ -33,13 +33,7 @@
             @Html.DisplayFor(model => model.block)
         </dd>
 
-        <dt>
-          District
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.district)
-        </dd>
+       
 
         <dt>
        County
@@ -67,9 +61,7 @@
           Use Value
         </dt>
 
-        <dd>
-          @string.Format("{0:#,##0}", Model.use_value)
-        </dd>
+        
 
         <dt>
             Current Fair Value
@@ -79,7 +71,13 @@
            @string.Format("{0:#,##0}", Model.fair_value)
         </dd>
 
-        
+        <dt>
+           Period
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.period)
+        </dd>
 
     
 

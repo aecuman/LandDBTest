@@ -25,13 +25,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.district, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.district, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.district, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.county, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -50,10 +43,10 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.use_value, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.period, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.use_value, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.use_value, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.period, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.period, "", new { @class = "text-danger" })
             </div>
         </div>
 
