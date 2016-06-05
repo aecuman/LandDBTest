@@ -91,7 +91,7 @@
 }
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
             @Html.PagedListPager(Model, Page_No => Url.Action("Index",
-    new { Page_No, sortVal = ViewBag.SortingDate, Filter_Value = ViewBag.FilterValue,block = ViewBag.blockFilter
+    new { Page_No, sortVal = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue,block = ViewBag.blockFilter
     }))
 
 
