@@ -46,7 +46,7 @@ namespace LandDBTest.Controllers
             if (!String.IsNullOrEmpty(vill_search)|| block!=null)
                 {
 
-                val = val.Where(v => v.village.Contains(vill_search));
+                val = val.Where(v => v.village.Contains(vill_search.Trim()));
                 if (block != null) { val = val.Where(v => v.block.ToString().Contains(block.ToString())); }
                // val=val.Where(v=> v.block.ToString().Contains(block.ToString()));
                 }
@@ -176,6 +176,13 @@ namespace LandDBTest.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public JsonResult AutoCompleteVillage(string term)
+        {
+            var result = (from r in db.Values
+                          where r.village.ToLower().StartsWith(term)
+                          select new { r.village }).Distinct();
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

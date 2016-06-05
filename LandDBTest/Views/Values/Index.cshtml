@@ -27,6 +27,25 @@
                 return false;
             }
         });
+        
+        $("#vill_search").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Values/AutoCompleteVillage",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: request.term},
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.village, value: item.village };
+                        }))
+                    }
+                })
+            },
+            messages: {
+                noResults:""
+            }
+        });
     });
 </script>
 <!--
@@ -46,7 +65,7 @@
     <div class="form-inline">
 
         <div class="form-group">
-            <label class="control-label col-md-6"> Search for a Village</label>
+            <label class="control-label col-md-6"> Enter your Village</label>
             <div class="col-md-6">
                 @Html.TextBox("vill_search", ViewBag.FilterValue as string, new { placeholder = ""})
               
@@ -67,7 +86,7 @@
             </div>
         </div>
     </div>
-
+    <span id="rData"></span>
 
 }
             Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
@@ -143,7 +162,7 @@
                             @Html.DisplayFor(modelItem => item.tenure)
                         </td>
                         <td>
-                            @item.period.ToString("dd - MM - yyyy")
+                            @item.period.ToString("dd / MM / yyyy")
                            
                         </td>
                         @*     <td>
