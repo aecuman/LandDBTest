@@ -22,7 +22,7 @@ namespace LandDBTest.Controllers
             
             ViewBag.CurrentSortOrder = sortVal;
             ViewBag.blockFilter = block;
-            ViewBag.SortingDate = sortVal == "Date_" ? "Date_desce" : "Date_";
+            ViewBag.SortingDate = sortVal == "Date_desce" ? "Date_" : "Date_desce";
 
             if (vill_search != null)
                 {
