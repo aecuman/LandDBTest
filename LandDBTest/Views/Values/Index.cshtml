@@ -103,8 +103,9 @@
                         Tenure
                     </th>
                     <th>
-                        @Html.ActionLink("order", "Index", new { sortVal = ViewBag.SortingDate, Filter_Value = ViewBag.FilterValue })
-                        Period
+                        Date
+                        @Html.ActionLink("^", "Index", new { sortVal = ViewBag.SortingDate, Filter_Value = ViewBag.FilterValue })
+                     
                     </th>
                     <th></th>
                 </tr>
