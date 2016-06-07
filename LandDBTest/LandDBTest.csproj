@@ -359,8 +359,6 @@
     <Content Include="Views\Values\List.cshtml" />
     <Content Include="Views\Values\_searchbar.cshtml" />
     <Content Include="Views\Values\Index.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\UserRoles.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\View.cshtml" />
     <Content Include="Views\RolesAdmin\Index.cshtml" />
     <Content Include="Views\RolesAdmin\Details.cshtml" />
