@@ -177,9 +177,3 @@ UpgradeLog*.htm
 *.bim.layout
 *.bim_*.settings
 
-# Microsoft Fakes
-FakesAssemblies/
-LandDBTest/Web.config
-LandDBTest/Web.config
-LandDBTest/Web.config
-LandDBTest*/

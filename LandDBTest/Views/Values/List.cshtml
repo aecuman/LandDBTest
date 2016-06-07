@@ -1,0 +1,186 @@
+﻿@model PagedList.IPagedList<LandDBTest.Models.Value> 
+@using PagedList.Mvc
+@{
+        ViewBag.Title = "List";
+    }
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#find').click(function() {
+            var vilSearch = $('#vill_search').val();
+            var blockSearch = $('#block').val();
+            $('#err').remove();
+            $('#err2').remove();
+            if (vilSearch == "") {
+                $('#vill_search').after("<p id='err' style='color:red;'></p>");
+                $('#err').html("* Fill this field first").show().fadeOut(2500);
+                $('#block').after("<p id='err2' style='color:red;'></p>");
+                $('#err2').html("* then this field next").show().delay(1500).fadeOut(1500);
+                return false;
+            }
+            
+        });
+        $('#block').keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $('#err2').html("Digits Only").show().fadeOut("slow");
+           
+                return false;
+            }
+        });
+        
+        $("#vill_search").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Values/AutoCompleteVillage",
+                    type: "POST",
+                    dataType: "json",
+                    data: { term: request.term},
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.village, value: item.village };
+                        }))
+                    }
+                })
+            },
+            messages: {
+                noResults:""
+            }
+        });
+    });
+</script>
+<!--
+<div class="jumbotron" style="text-align:center">
+    <h2>Uganda Property Reference</h2>
+    <h3>Find Out land Values and Future Infrastructure Projects in your Village.</h3>
+    <h5>Search for Comparable Values per Village and Block </h5>
+</div>
+
+-->
+<hr />
+<p>
+  @*  @Html.ActionLink("Create New", "Create") *@
+</p>
+@using (Html.BeginForm("List", "Values", FormMethod.Get))
+{
+    <div class="form-inline">
+
+        <div class="form-group">
+            <label class="control-label col-md-6"> Enter your Village</label>
+            <div class="col-md-6">
+                @Html.TextBox("vill_search", ViewBag.FilterValue as string, new { placeholder = ""})
+              
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-6">   Block Number:</label>
+            <div class="col-md-6">
+                @Html.TextBox("block", ViewBag.blockFilter as string, new { placeholder = "", @value=1})
+      
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6">
+                <input type="submit" value="Search" id="find"  class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+<hr />
+
+}
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+            @Html.PagedListPager(Model, Page_No => Url.Action("List",
+    new { Page_No, sortVal = ViewBag.CurrentSortOrder, Filter_Value = ViewBag.FilterValue,block = ViewBag.blockFilter
+    }))
+
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Village
+
+                    </th>
+                    <th>
+                        Block
+                    </th>
+                   
+                    <th>
+                        County
+                    </th>
+                    <th>
+                        User
+                    </th>
+                    <th>
+                        Acreage
+                    </th>
+                    <th>
+                        Current Fair Value
+                    </th>
+                  
+                    <th>
+                        Tenure
+                    </th>
+                    <th>
+                        Date
+                        @Html.ActionLink(" ", "List", new { sortVal = ViewBag.SortingDate, Filter_Value = ViewBag.FilterValue},new { @class = "glyphicon glyphicon-sort" })
+                     
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.village)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.block)
+                        </td>
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.county)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.user)
+
+                        </td>
+
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.acreage)
+                        </td>
+                      
+                        <td>
+                            @string.Format("{0:#,##0}", item.fair_value)
+
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.tenure)
+                        </td>
+                        <td>
+                            @item.period.ToString("dd / MM / yyyy")
+                           
+                        </td>
+                        @*     <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                            </td>
+                        *@
+                    </tr>
+                }
+
+
+            </table>
+            <br />
+<h4>Assumptions</h4>
+<p>
+    The majority of the property sales transactions registered therein are a representation of the true property market of Uganda. It does not take into consideration neither does it separate the sales transactions that are carried out under duress or distress.
+</p>
+          
+
+
