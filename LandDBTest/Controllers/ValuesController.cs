@@ -15,8 +15,12 @@ namespace LandDBTest.Controllers
 
 
         // GET: Values
-      
-        public ActionResult Index(int? block, string vill_search, string county, string sortVal, string Filter_Value, int? Page_No)
+        [Authorize]
+      public ActionResult Index()
+        {
+           return View();
+        }
+        public ActionResult List(int? block, string vill_search, string county, string sortVal, string Filter_Value, int? Page_No)
         {
          
             
@@ -73,7 +77,7 @@ namespace LandDBTest.Controllers
             }
         
         
-
+        [Authorize]
         // GET: Values/Details/5
         public ActionResult Details(int? id)
         {
@@ -90,6 +94,7 @@ namespace LandDBTest.Controllers
         }
 
         // GET: Values/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -113,6 +118,7 @@ namespace LandDBTest.Controllers
         }
 
         // GET: Values/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -144,6 +150,7 @@ namespace LandDBTest.Controllers
         }
 
         // GET: Values/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
