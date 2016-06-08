@@ -7,7 +7,7 @@
 
     <ul class="nav navbar-nav navbar-right">
         <li>
-            <a>  Hello  @User.Identity.Name</a>
+            <a>  Hello  @User.Identity.GetUserName()</a>
                 </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
     </ul>

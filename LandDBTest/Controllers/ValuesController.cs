@@ -188,7 +188,7 @@ namespace LandDBTest.Controllers
         {
             var result = (from r in db.Values
                           where r.village.ToLower().StartsWith(term)
-                          select new { r.village }).Distinct();
+                          select new { r.village }).Distinct().Take(8);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
     }

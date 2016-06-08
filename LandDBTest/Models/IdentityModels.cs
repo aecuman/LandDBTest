@@ -3,10 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Collections.Generic;
-using static LandDBTest.ApplicationRoleManager;
-using System.Web;
-using Microsoft.AspNet.Identity.Owin;
+
 
 namespace LandDBTest.Models
 {
@@ -32,7 +29,7 @@ namespace LandDBTest.Models
         }
         static ApplicationDbContext()
         {
-            Database.SetInitializer(new ApplicationDbInitializer());
+           // Database.SetInitializer(new ApplicationDbInitializer());
         }
 
         public static ApplicationDbContext Create()
