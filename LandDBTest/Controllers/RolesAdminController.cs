@@ -11,7 +11,7 @@ using System.Web.Mvc;
 
 namespace LandDBTest.Controllers
 {
- 
+    [Authorize(Roles = "Admin")]
     public class RolesAdminController : Controller
     {
         public RolesAdminController()

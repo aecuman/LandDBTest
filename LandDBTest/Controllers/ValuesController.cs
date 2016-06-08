@@ -6,6 +6,8 @@ using System.Net;
 using System.Web.Mvc;
 using LandDBTest.Models;
 using PagedList;
+using Microsoft.AspNet.Identity;
+using System.Web.Security;
 
 namespace LandDBTest.Controllers
 {
@@ -15,11 +17,12 @@ namespace LandDBTest.Controllers
 
 
         // GET: Values
-        [Authorize]
+        [Authorize(Roles = "Admin, CanEdit, User")]
       public ActionResult Index()
         {
            return View();
         }
+        [Authorize(Roles = "Admin, CanEdit, User")]
         public ActionResult List(int? block, string vill_search, string county, string sortVal, string Filter_Value, int? Page_No)
         {
          
@@ -75,9 +78,9 @@ namespace LandDBTest.Controllers
                 return View(val.ToPagedList(No_Of_Page, Size_Of_Page));
 
             }
-        
-        
-        [Authorize]
+
+
+        [Authorize(Roles = "Admin, CanEdit")]
         // GET: Values/Details/5
         public ActionResult Details(int? id)
         {
@@ -94,7 +97,7 @@ namespace LandDBTest.Controllers
         }
 
         // GET: Values/Create
-        [Authorize]
+        [Authorize(Roles = "Admin, CanEdit")]
         public ActionResult Create()
         {
             return View();
@@ -118,7 +121,7 @@ namespace LandDBTest.Controllers
         }
 
         // GET: Values/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin, CanEdit")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -136,6 +139,7 @@ namespace LandDBTest.Controllers
         // POST: Values/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin, CanEdit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,tenure,block,county,acreage,use_value,fair_value,village,user,period")] Value value)
@@ -150,7 +154,7 @@ namespace LandDBTest.Controllers
         }
 
         // GET: Values/Delete/5
-        [Authorize]
+        [Authorize(Roles = "Admin, CanEdit")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -166,6 +170,7 @@ namespace LandDBTest.Controllers
         }
 
         // POST: Values/Delete/5
+        [Authorize(Roles = "Admin, CanEdit")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -184,6 +189,7 @@ namespace LandDBTest.Controllers
             }
             base.Dispose(disposing);
         }
+        [AllowAnonymous]
         public JsonResult AutoCompleteVillage(string term)
         {
             var result = (from r in db.Values
