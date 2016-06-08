@@ -17,12 +17,12 @@ namespace LandDBTest.Controllers
 
 
         // GET: Values
-        [Authorize(Roles = "Admin, CanEdit, User")]
+        [AllowAnonymous]
       public ActionResult Index()
         {
            return View();
         }
-        [Authorize(Roles = "Admin, CanEdit, User")]
+        [AllowAnonymous]
         public ActionResult List(int? block, string vill_search, string county, string sortVal, string Filter_Value, int? Page_No)
         {
          

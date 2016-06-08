@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Web;
 
 namespace LandDBTest.Models
 {

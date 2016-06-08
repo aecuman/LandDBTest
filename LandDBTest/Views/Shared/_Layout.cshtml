@@ -20,13 +20,15 @@
                 @Html.ActionLink("Uganda Property Reference", "Index", "Values", new { area = "" }, new { @class = "navbar-brand" })
             </div>
           <div class="navbar-collapse collapse">
-@*
+ @if (User.IsInRole("Admin"))
+ {
     <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-        <li>@Html.ActionLink("About", "About", "Home")</li>
-        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+      
+        <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
+        <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+       
     </ul>
-*@
+ }
         @Html.Partial("_LoginPartial")
     </div>
        
