@@ -17,12 +17,12 @@ namespace LandDBTest.Controllers
 
 
         // GET: Values
-        [AllowAnonymous]
+        [Authorize]
       public ActionResult Index()
         {
            return View();
         }
-        [AllowAnonymous]
+        [Authorize]
         public ActionResult List(int? block, string vill_search, string county, string sortVal, string Filter_Value, int? Page_No)
         {
          
