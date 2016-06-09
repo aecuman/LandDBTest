@@ -27,10 +27,7 @@ namespace LandDBTest.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        static ApplicationDbContext()
-        {
-           // Database.SetInitializer(new ApplicationDbInitializer());
-        }
+        
 
         public static ApplicationDbContext Create()
         {

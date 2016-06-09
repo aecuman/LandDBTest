@@ -20,6 +20,9 @@ namespace LandDBTest.Models
     public class EditUserViewModel
     {
         public string Id { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        [Display(Name = "User name")]
+        public string UserName { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Email")]

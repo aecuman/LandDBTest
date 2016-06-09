@@ -91,9 +91,8 @@ namespace LandDBTest.Controllers
             {
                 var user = new ApplicationUser
                 {
-                    UserName = userViewModel.Email,
-                    Email =
-                    userViewModel.Email,
+                    UserName = userViewModel.UserName,
+                    Email = userViewModel.Email,
                    
                  
                 };
@@ -149,6 +148,7 @@ namespace LandDBTest.Controllers
             {
                 Id = user.Id,
                 Email = user.Email,
+                UserName=user.UserName,
                 // Include the Addresss info:
                
                 RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
@@ -174,7 +174,7 @@ namespace LandDBTest.Controllers
                     return HttpNotFound();
                 }
 
-                user.UserName = editUser.Email;
+                user.UserName = editUser.UserName;
                 user.Email = editUser.Email;
              
 
