@@ -4926,15 +4926,28 @@ a.list-group-item.active > .badge,
 .nav-pills > li > a > .badge {
   margin-left: 3px;
 }
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 75vh; /* These two lines are counted as one :-)       */
 
+  display: flex;
+  align-items: center;
+}
+.home{
+    
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 0.05em solid gainsboro;
+
+}
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  font-size: 21px;
+
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+
 }
 
 .jumbotron h1 {

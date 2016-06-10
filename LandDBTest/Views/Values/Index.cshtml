@@ -5,8 +5,8 @@
 }
 @Scripts.Render("~/bundles/jquery")
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('#find').click(function() {
+    $(document).ready(function () {
+        $('#find').click(function () {
             var vilSearch = $('#vill_search').val();
             var blockSearch = $('#block').val();
             $('#err').remove();
@@ -34,67 +34,61 @@
                     url: "/Values/AutoCompleteVillage",
                     type: "POST",
                     dataType: "json",
-                    data: { term: request.term},
+                    data: { term: request.term },
                     success: function (data) {
                         response($.map(data, function (item) {
                             return { label: item.village, value: item.village };
                         }))
                     }
                 })
-              
+
             },
             messages: {
-                noResults:""
+                noResults: ""
             }
         });
-       
+
     });
 </script>
-<div class="jumbotron">
-    <h5>
-        The Uganda Property Reference is an ongoing compilation of titled property market values in Uganda from 2013. It is extracted from the property transfer records (Stamp Duty Payments Registry) at the Ministry of Lands, Housing and Urban Development. This is in form of the current fair values as derived from sales agreements, and transfer transactions of the properties.
-    </h5>
-    <h5>
-        This register is an ongoing compilation for the users to access the current and past fair market value for all titled properties countrywide. It gives transaction records by village, block, land size, and use of land.
-    </h5>
-    <h5>
-        To fully benefit from the information provided by this register, please have a copy of your certificate of title as you log in.
-    </h5>
-    
-</div>
-<h4>Assumptions</h4>
-<p>
- The majority of the property sales transactions registered therein are a representation of the true property market of Uganda. It does not take into consideration neither does it separate the sales transactions that are carried out under duress or distress.
-</p>
-<hr />
-<h3><a> Search Portal<i class="glyphicon glyphicon-arrow-down"></i></a></h3>
-@using (Html.BeginForm("List", "Values", FormMethod.Post))
-{
-    <div class="form-inline">
 
-        <div class="form-group">
-            <label class="control-label col-md-6"> Enter your Village</label>
-            <div class="col-md-6">
-                @Html.TextBox("vill_search", ViewBag.FilterValue as string, new { placeholder = "" })
-         
-            </div>
+<div class="jumbotron vertical-center">
+    <div class="container text-center">
+        <div class="row">
+            <h3><a> Search Portal<i class="glyphicon glyphicon-arrow-down"></i></a></h3>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-6">   Block Number:</label>
-            <div class="col-md-6">
-                @Html.TextBox("block", ViewBag.blockFilter as string, new { placeholder = "", @value = 1 })
+     
+            <div class="home">
+                @using (Html.BeginForm("List", "Values", FormMethod.Post))
+            {
+                    <div class="form-inline">
+
+                        <div class="form-group">
+                            <label class="control-label col-md-6"> Enter your Village</label>
+                            <div class="col-md-6">
+                                @Html.TextBox("vill_search", ViewBag.FilterValue as string, new { placeholder = "" })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-6">   Block Number:</label>
+                            <div class="col-md-6">
+                                @Html.TextBox("block", ViewBag.blockFilter as string, new { placeholder = "", @value = 1 })
 
 
-            </div>
-        </div>
+                            </div>
+                        </div>
 
-        <div class="form-group">
-            <div class="col-md-6">
-                <input type="submit" value="Search" id="find" class="btn btn-default" />
-            </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <input type="submit" value="Search" id="find" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                }
+          
         </div>
     </div>
-
-    
-
-}
+</div>
