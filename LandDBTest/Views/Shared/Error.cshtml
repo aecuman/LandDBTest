@@ -5,8 +5,7 @@
 }
 
 <h1 class="text-danger">Logged In.</h1>
-<h2 class="text-danger">You are already logged in. Log out to use a different user or Go back to Homepage
-@Html.ActionLink("Homepage", "Index", "Values") </h2>
+<h2>You are already logged in. Log out to use a different user or Click here to go back to the @Html.ActionLink(" ", "Index", "Values", new { @class = "glyphicon glyphicon-home" }) </h2>
 
 Go back to Homepage
 @Html.ActionLink("Already Logged In", "Index", "Values")
