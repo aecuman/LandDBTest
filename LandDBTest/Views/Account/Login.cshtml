@@ -16,12 +16,17 @@
     
     
 </div>
+@if (!User.Identity.IsAuthenticated)
+{
 <div class="row">
     <div class="col-md-9 col-md-offset-3">
         <div class="col-md-8">
             <section id="loginForm">
+               
+
+                
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-            {
+                {
                     @Html.AntiForgeryToken()
                     <h3 class="text-center">Login</h3>
                     <hr />
@@ -63,6 +68,7 @@
                             @Html.ActionLink("Forgot your password?", "ForgotPassword")
                         </p>*@
                 }
+                
             </section>
         </div>
         <div class="col-md-4">
@@ -70,6 +76,19 @@
         </div>
     </div>
 </div>
+}
+else
+{
+    <div>
+        <h3 class="text-danger">
+            @Html.Action("Index")
+            Already Logged In. Go back to Homepage 
+            @Html.ActionLink("Already Logged In", "Index", "Values")
+        </h3>
+    </div>
+
+}
+
 
 <footer>
     <small></small>

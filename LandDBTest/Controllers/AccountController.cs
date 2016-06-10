@@ -76,7 +76,7 @@ namespace LandDBTest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (Request.IsAuthenticated|| User.Identity.IsAuthenticated) {
+            if (Request.IsAuthenticated & User.Identity.IsAuthenticated) {
                 return RedirectToAction("Index", "Values");
             }
             else
