@@ -5,8 +5,6 @@
 }
 
 <h1 class="text-danger">Logged In.</h1>
-<h2>You are already logged in. Log out to use a different user or Click here to go back to the @Html.ActionLink(" ", "Index", "Values", new { @class = "glyphicon glyphicon-home" }) </h2>
-
-Go back to Homepage
-@Html.ActionLink("Already Logged In", "Index", "Values")
+<h2>You are already logged in. Log out to use a different user </h2>
+Anti Forgery Token avoids double login scenarios.Go back to the @Html.ActionLink("Search Portal", "Index", "Values")
 
