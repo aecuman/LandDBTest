@@ -54,7 +54,61 @@
 <div class="jumbotron vertical-center">
     <div class="container text-center">
         <div class="row">
-            <h3 class="text-primary">Search Portal<i class="glyphicon glyphicon-arrow-down"></i></h3>
+          
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Click here for demo</button>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Demonstration</h4>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#mailo">Mailo</a></li>
+                                <li><a data-toggle="tab" href="#freehold">Freehold</a></li>
+                                <li><a data-toggle="tab" href="#leasehold">Leasehold</a></li>                               
+                            </ul>
+                            <div class="tab-content">
+                                <div id="mailo" class="tab-pane fade in active">
+                                   <h4>Insert Village and  block as shown below</h4>
+                                    <img src="~/Pictures/pic 01.jpg" class="img-responsive" />
+                                </div>
+                                <div id="freehold" class="tab-pane fade">
+                                    <h4>Insert Village and  block as shown below</h4>
+                                    <img src="~/Pictures/pic 03.jpg" class="img-responsive" />
+                                </div>
+                                <div id="leasehold" class="tab-pane fade">
+                                    <h4>Insert Village and  block as shown below</h4>
+                                    <img src="~/Pictures/pic 02.jpg" class="img-responsive" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            @*
+    <div>
+        <div class="col-lg-6">
+            <img src="~/Pictures/pic 01.jpg" height="200" style="min-width:50%;" />
+        </div>
+        <div class="col-lg-6"></div>
+        <img src="~/Pictures/pic 02.jpg" height="200" style="min-width:50%;"/>
+    </div>
+            *@
+            <h4 class="text-primary">
+                Insert the name of your village and the block number as they appear on your Certificate of Title to view transactions that have occured near your property
+            </h4>
+                
         </div>
      
             <div class="home">
