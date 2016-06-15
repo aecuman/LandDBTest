@@ -150,7 +150,7 @@
 
                         </td>
                         <td>
-                          
+                            @Html.DisplayFor(modelItem => item.development)
 
                         </td>
 
@@ -160,15 +160,16 @@
                         </td>
                       
                         <td>
-                            @string.Format("{0:#,##0}", item.fair_value)
+                            @string.Format("{0:#,##0}", item.fair_value) &nbsp;@Html.DisplayFor(modelItem => item.currency)
 
                         </td>
+                        
 
                         <td>
                             @Html.DisplayFor(modelItem => item.tenure)
                         </td>
                         <td>
-                            @item.period.ToString("dd / MM / yyyy")
+                          @if (item.period == null) { } else { @item.period.GetValueOrDefault().ToString("dd / MM / yyyy") }
                            
                         </td>
                         @*     <td>

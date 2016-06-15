@@ -4,25 +4,27 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="landdb.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="landdbStoreContainer">
-    <EntitySet Name="Values" EntityType="landdb.Store.Values" store:Type="Tables" Schema="dbo" />
-  </EntityContainer>
-  <EntityType Name="Values">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="village" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="block" Type="float" Nullable="true" />
-    <Property Name="county" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="acreage" Type="float" Nullable="true" />
-    <Property Name="fair_value" Type="float" Nullable="true" />
-    <Property Name="user" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="tenure" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="period" Type="datetime" Nullable="false" />
-  </EntityType>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="landdb.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Values">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="village" Type="nvarchar(max)" />
+          <Property Name="block" Type="float" />
+          <Property Name="county" Type="nvarchar(max)" />
+          <Property Name="acreage" Type="float" />
+          <Property Name="fair_value" Type="float" />
+          <Property Name="currency" Type="nvarchar(max)" />
+          <Property Name="user" Type="nvarchar(max)" />
+          <Property Name="development" Type="nvarchar(max)" />
+          <Property Name="tenure" Type="nvarchar(max)" />
+          <Property Name="period" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="landdbStoreContainer">
+          <EntitySet Name="Values" EntityType="Self.Values" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="landdb" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -41,7 +43,9 @@
           <Property Name="fair_value" Type="Double" />
           <Property Name="user" Type="String" Unicode="true" FixedLength="false" MaxLength="Max" />
           <Property Name="tenure" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="period" Type="DateTime" Nullable="false" />
+          <Property Name="period" Type="DateTime" Precision="3" />
+          <Property Name="currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="development" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -52,7 +56,9 @@
     <EntitySetMapping Name="Values">
       <EntityTypeMapping TypeName="IsTypeOf(landdb.Value)">
         <MappingFragment StoreEntitySet="Values">
-          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="development" ColumnName="development" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="village" ColumnName="village" />
           <ScalarProperty Name="block" ColumnName="block" />
           <ScalarProperty Name="county" ColumnName="county" />

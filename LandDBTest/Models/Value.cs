@@ -11,11 +11,10 @@ namespace LandDBTest.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Value
     {
         public int Id { get; set; }
-        [RegularExpression("([a-zA-Z0-9 .&'-]+)", ErrorMessage = "Enter only alphabets and numbers of First Name")]
         public string village { get; set; }
         public Nullable<double> block { get; set; }
         public string county { get; set; }
@@ -23,6 +22,8 @@ namespace LandDBTest.Models
         public Nullable<double> fair_value { get; set; }
         public string user { get; set; }
         public string tenure { get; set; }
-        public System.DateTime period { get; set; }
+        public Nullable<System.DateTime> period { get; set; }
+        public string currency { get; set; }
+        public string development { get; set; }
     }
 }
