@@ -76,10 +76,7 @@ namespace LandDBTest.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (Request.IsAuthenticated & User.Identity.IsAuthenticated) {
-                return RedirectToAction("Index", "Values");
-            }
-            else
+            try
             {
                 if (!ModelState.IsValid)
                 {
@@ -102,8 +99,13 @@ namespace LandDBTest.Controllers
                         ModelState.AddModelError("", "Invalid login attempt.");
                         return View(model);
                 }
+
             }
-        }
+            catch
+            {
+                return RedirectToLocal(returnUrl);
+            }
+            }
 
         //
         // GET: /Account/VerifyCode
