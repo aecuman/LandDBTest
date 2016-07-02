@@ -3,92 +3,107 @@
 @{
     ViewBag.Title = "Log in";
 }
-<div class="jumbotron" style="background-color:#f9f9f9">
+<style type="text/css">
+    body{
+        background-color:#f6f6f6
+    }
+</style>
+}
+<div class="jumbotron">
     <h5>
         The Uganda Property Reference is an ongoing compilation of titled property market values in Uganda. It is extracted from the property transfer records (Stamp Duty Payments Registry) at the Ministry of Lands, Housing and Urban Development from 2013. This is in form of the current fair values as derived from sales agreements, and transfer transactions of the properties.
     </h5>
-        <h5> 
-    This register is an ongoing compilation that gives transaction records by village, block, land size and use.
-        </h5>
+    <h5>
+        This register is an ongoing compilation that gives transaction records by village, block, land size and use.
+    </h5>
     <h5>
         To fully benefit from the information provided by this register, please have a copy of your certificate of title on hand as you log in.
     </h5>
-    
-    
+   
 </div>
-@if (!User.Identity.IsAuthenticated)
-{
-<div class="row">
-    <div class="col-md-9 col-md-offset-3">
-        <div class="col-md-8">
-            <section id="loginForm">
-               
+<div class="text-center">
+    <a data-toggle="collapse" class="btn btn-default btn-info" data-target="#loginform">Login</a>
+    <a class="btn btn-default btn-default" href="/Account/Register">Register as a new user</a>
+</div>
+<hr />
 
-                
-                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                @if (!User.Identity.IsAuthenticated)
                 {
-                    @Html.AntiForgeryToken()
-                    <h3 class="text-center">Login</h3>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
-                        <div class="col-md-9">
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
-                        <div class="col-md-9">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-4">
+                            <div class="col-md-8">
+                                <section id="loginForm">
+                               
+                                                   
+                                                   
+                                  
+                                  
+                                    
+                                    <div id="loginform" class="collapse">
+
+                                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                                            @Html.AntiForgeryToken()
+
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                                                <div class="col-md-9">
+                                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                                        <div class="form-group">
+                                                            @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
+                                                            <div class="col-md-9">
+                                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-3 col-md-9">
+                                                                <div class="checkbox">
+                                                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                                                    @Html.LabelFor(m => m.RememberMe)
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="col-md-offset-3 col-md-9">
+                                                                <input type="submit" value="Log in" class="btn btn-default" />
+                                                            </div>
+
+                                                        </div>
+                                                       
+
+                                                        @* Enable this once you have account confirmation enabled for password reset functionality
+                            <p>
+                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                            </p>*@
+                                        }
+                                    </div>
+
+
+                                         
+                                </section>
+                            </div>
+                            <div class="col-md-4">
+
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-md-offset-3 col-md-9">
-                            <input type="submit" value="Log in" class="btn btn-default" />
-                        </div>
-                        
-                          </div>
-                        <div class="col-md-offset-3 col-md-9">
-                            @Html.ActionLink("Register as a new user", "Register", new { @class = "col-md-3 control-label" })
-                        </div>
-
-                    @* Enable this once you have account confirmation enabled for password reset functionality
-                        <p>
-                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                        </p>*@
                 }
-                
-            </section>
-        </div>
-        <div class="col-md-4">
+                else
+                {
+                    <div>
+                        <h3 class="text-danger">
+                            @Html.Action("Index")
+                            Already Logged In. Go back to Homepage
+                            @Html.ActionLink("Already Logged In", "Index", "Values")
+                        </h3>
+                    </div>
 
-        </div>
-    </div>
-</div>
-}
-else
-{
-    <div>
-        <h3 class="text-danger">
-            @Html.Action("Index")
-            Already Logged In. Go back to Homepage 
-            @Html.ActionLink("Already Logged In", "Index", "Values")
-        </h3>
-    </div>
-
-}
-
+                }
 
 <footer>
     <small></small>
@@ -98,7 +113,7 @@ else
     </h6>
     <h6>  •	The information given herein is provided on the understanding that its accuracy is not guaranteed and that no liability whatsoever can be accepted if loss of damage results from any error, omission, or misstatement therein.</h6>
 
- 
+
 
 </footer>
 @section Scripts {
