@@ -11,14 +11,17 @@
 
 <div class="jumbotron">
     <h5>
-        The Uganda Property Reference is an ongoing compilation of titled property market values in Uganda. It is extracted from the property transfer records (Stamp Duty Payments Registry) at the Ministry of Lands, Housing and Urban Development from 2013. This is in form of the current fair values as derived from sales agreements, and transfer transactions of the properties.
+        The Uganda Property Reference is an ongoing compilation of accurately researched information to enable all property industry participants to make informed decisions. Right from the Uganda Government departments and agencies to the Non-governmental organisations, and the private sector business community, the Uganda Property Reference is structured to be a reference and a starting point in the quest for information on the property industry in Uganda. 
+    </h5>
+   
+  
+    <h5>
+        •	An index of property transactions as compiled by Estate Agents countrywide.
     </h5>
     <h5>
-        This register is an ongoing compilation that gives transaction records by village, block, land size and use.
+        To fully benefit from the information provided by this property reference register, please have a copy of your certificate of title as you log in.
     </h5>
-    <h5>
-        To fully benefit from the information provided by this register, please have a copy of your certificate of title on hand as you log in.
-    </h5>
+   
    
 </div>
 <div class="text-center">
@@ -26,40 +29,39 @@
     <a class="btn btn-default btn-default" href="/Account/Register">Register as a new user</a>
 </div>
 <hr />
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+            <div class="col-md-8">
+                <section id="loginForm">
 
-                @if (!User.Identity.IsAuthenticated)
+
+
+
+
+
+                    <div id="loginform" class="collapse">
+
+                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-4">
-                            <div class="col-md-8">
-                                <section id="loginForm">
-                               
-                                                   
-                                                   
-                                  
-                                  
-                                    
-                                    <div id="loginform" class="collapse">
+                            @Html.AntiForgeryToken()
 
-                                        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-                {
-                                            @Html.AntiForgeryToken()
-
-                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                                <div class="col-md-9">
+                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                                             <div class="form-group">
-                                                @Html.LabelFor(m => m.UserName, new { @class = "col-md-3 control-label" })
+                                                @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
                                                 <div class="col-md-9">
-                                                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-                                                    @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                                                 </div>
                                             </div>
-                                                        <div class="form-group">
-                                                            @Html.LabelFor(m => m.Password, new { @class = "col-md-3 control-label" })
-                                                            <div class="col-md-9">
-                                                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                                            </div>
-                                                        </div>
                                                         <div class="form-group">
                                                             <div class="col-md-offset-3 col-md-9">
                                                                 <div class="checkbox">
@@ -74,36 +76,49 @@
                                                             </div>
 
                                                         </div>
-                                                       
+
 
                                                         @* Enable this once you have account confirmation enabled for password reset functionality
-                            <p>
-                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                            </p>*@
-                                        }
-                                    </div>
-
-
-                                         
-                                </section>
-                            </div>
-                            <div class="col-md-4">
-
-                            </div>
-                        </div>
-                    </div>
-                }
-                else
-                {
-                    <div>
-                        <h3 class="text-danger">
-                            @Html.Action("Index")
-                            Already Logged In. Go back to Homepage
-                            @Html.ActionLink("Already Logged In", "Index", "Values")
-                        </h3>
+                                                            <p>
+                                                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                                            </p>*@
+                        }
                     </div>
 
-                }
+
+
+                </section>
+            </div>
+            <div class="col-md-4">
+
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div>
+        <h3 class="text-danger">
+            @Html.Action("Index")
+            Already Logged In. Go back to Homepage
+            @Html.ActionLink("Already Logged In", "Index", "Values")
+        </h3>
+    </div>
+
+}
+<h5> At present, the property reference is twofold;</h5>
+<h5>
+    •	An index of titled property market values in Uganda from 2013 to date. It is extracted from the property transfer records (Stamp Duty Payments Registry) at the Ministry of Lands, Housing and Urban Development. This is in form of the current fair values as derived from sales agreements, and transfer transactions of the properties. It gives transaction records by village, block, land size, and use of land. Plot numbers are avoided to avoid personalization of the data.
+    We believe that this property reference will strongly improve the record keeping of these transactions at the ministry and over the next few years, property trends, and other indices will be derived from the same.
+</h5>
+<h5>
+    •	An index of the ongoing and planned infrastructure projects from 2015 to date to show the various blocks of land that these projects have and will affect countrywide. At present, we can only list these projects, and the affected areas by block number. Plans to show these areas/ blocks by mapping and deed sheets are underway. Over the next few months to years, the property reference will easily highlight neighbourhoods already affected or potentially affected by infrastructure projects. This will benefit all Ugandans.
+</h5>
+<h5>
+    Upcoming Additions to the Property Reference
+</h5>
+
+          
 
 <footer>
     <small></small>
