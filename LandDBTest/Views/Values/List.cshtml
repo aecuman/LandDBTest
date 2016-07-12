@@ -63,7 +63,12 @@
 
         var options = {
             title: 'Rate per acre for @ViewBag.FilterValue @if (ViewBag.blockFilter != null) { string.Format("block{0}", ViewBag.blockFilter); } ',
-          curveType: 'function',
+            curveType: 'function',
+            animation:{
+                duration: 1000,
+                easing: 'inAndOut',
+                startup: true
+            },
           legend: { position: 'bottom' }
             };
 
