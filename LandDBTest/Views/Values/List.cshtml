@@ -48,6 +48,33 @@
         });
     });
 </script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+          var data = new google.visualization.DataTable();
+          data.addColumn('date', ' Year');         
+          data.addColumn('number', ' Rate per acre');          
+         
+          data.addRows([@Html.Raw(ViewBag.ArrayList)]);
+
+
+        var options = {
+            title: 'Rate per acre for @ViewBag.FilterValue @if (ViewBag.blockFilter != null) { string.Format("block{0}", ViewBag.blockFilter); } ',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+            };
+
+                var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+                chart.draw(data, options);
+               
+      }
+</script>
+
+
 <!--
 <div class="jumbotron" style="text-align:center">
     <h2>Uganda Property Reference</h2>
@@ -60,6 +87,7 @@
 <p>
   @*  @Html.ActionLink("Create New", "Create") *@
 </p>
+
 @using (Html.BeginForm("List", "Values", FormMethod.Get))
 {
     <div class="form-inline">
@@ -169,7 +197,7 @@
                             @Html.DisplayFor(modelItem => item.tenure)
                         </td>
                         <td>
-                          @if (item.period == null) { } else { @item.period.GetValueOrDefault().ToString("dd / MM / yyyy") }
+                          @if (item.period == null) { } else { @item.period.GetValueOrDefault().ToString("yyyy") }
                            
                         </td>
                         @*     <td>
@@ -184,8 +212,9 @@
 
             </table>
             <br />
-
-
-          
-
-
+@*
+    @Model.ReportWithPivot("table","period", "fair_value", AggregateFunction.Sum, "village", "block")
+    @Model.Pivot("period","fairvalue",AggregateFunction.Sum,"village","block")
+*@
+<div id="curve_chart" style="width: 900px; height: 500px"></div>
+        

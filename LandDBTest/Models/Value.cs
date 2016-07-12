@@ -25,5 +25,6 @@ namespace LandDBTest.Models
         public Nullable<System.DateTime> period { get; set; }
         public string currency { get; set; }
         public string development { get; set; }
+        public Nullable<double> rateperacre { get; set; }
     }
 }

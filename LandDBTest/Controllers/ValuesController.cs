@@ -8,13 +8,16 @@ using LandDBTest.Models;
 using PagedList;
 using Microsoft.AspNet.Identity;
 using System.Web.Security;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace LandDBTest.Controllers
 {
     public class ValuesController : Controller
     {
         private landdbContainer db = new landdbContainer();
-
+        String matrix;
+       
 
         // GET: Values
         [Authorize]
@@ -75,6 +78,24 @@ namespace LandDBTest.Controllers
 
                 int Size_Of_Page = 10;
                 int No_Of_Page = (Page_No ?? 1);
+
+            List<string> liststring = new List<string>();
+
+            foreach (var row in val.ToList().Where(x => x.period != null))
+            {
+
+                var d8 = Convert.ToDateTime(row.period);
+                var d8string = string.Format("new Date({0},{1},{2})", d8.Year, d8.Month, d8.Day);
+                string stringRay = string.Format("[{0},{1}]",d8string,row.rateperacre);
+               // var joinString = string.Join(",", stringRay);
+                // matrix = 
+                liststring.Add(stringRay);
+            }
+          matrix=  string.Join(",", liststring);
+                ViewBag.ArrayList = matrix;
+            
+
+            
                 return View(val.ToPagedList(No_Of_Page, Size_Of_Page));
 
             }
@@ -196,6 +217,22 @@ namespace LandDBTest.Controllers
                           where r.village.ToLower().StartsWith(term)
                           select new { r.village }).Distinct().Take(8);
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ReportWithPivot(int? block, string vill_search)
+        {
+            if(block!=null && !string.IsNullOrEmpty(vill_search))
+            {
+                var val = from s in db.Values
+                          select s;
+                val = val.Where(s => s.village.Contains(vill_search) && s.block.ToString().Contains(block.ToString())&& s.period!=null);
+
+                return View(val.ToList());
+            }
+            else
+            {
+              return  View();
+            }
+            
         }
     }
 }

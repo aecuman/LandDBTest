@@ -20,6 +20,7 @@
           <Property Name="development" Type="nvarchar(max)" />
           <Property Name="tenure" Type="nvarchar(max)" />
           <Property Name="period" Type="datetime" />
+          <Property Name="rateperacre" Type="float" StoreGeneratedPattern="Computed" />
         </EntityType>
         <EntityContainer Name="landdbStoreContainer">
           <EntitySet Name="Values" EntityType="Self.Values" Schema="dbo" store:Type="Tables" />
@@ -46,6 +47,7 @@
           <Property Name="period" Type="DateTime" Precision="3" />
           <Property Name="currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="development" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rateperacre" Type="Double" Nullable="true" annotation:StoreGeneratedPattern="Computed" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -56,7 +58,8 @@
     <EntitySetMapping Name="Values">
       <EntityTypeMapping TypeName="IsTypeOf(landdb.Value)">
         <MappingFragment StoreEntitySet="Values">
-          <ScalarProperty Name="development" ColumnName="development" />
+                <ScalarProperty Name="rateperacre" ColumnName="rateperacre" />
+                <ScalarProperty Name="development" ColumnName="development" />
                 <ScalarProperty Name="currency" ColumnName="currency" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="village" ColumnName="village" />
