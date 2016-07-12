@@ -217,7 +217,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\ApplicationRole.cs" />
-    <Compile Include="Models\DataAccess.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\landdb.cs">
       <AutoGen>True</AutoGen>
