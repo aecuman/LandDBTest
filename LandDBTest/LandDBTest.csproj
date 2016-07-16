@@ -206,6 +206,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
@@ -288,9 +289,12 @@
       <LastGenOutput>Value1.cs</LastGenOutput>
       <DependentUpon>landdb.edmx</DependentUpon>
     </Content>
+    <Content Include="Pictures\indexMap.svg" />
     <Content Include="Pictures\pic 01.jpg" />
     <Content Include="Pictures\pic 02.jpg" />
     <Content Include="Pictures\pic 03.jpg" />
+    <Content Include="Pictures\priceTable.svg" />
+    <Content Include="Pictures\trendGraph.svg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -368,6 +372,7 @@
     <Content Include="Views\UsersAdmin\Create.cshtml" />
     <Content Include="Views\UsersAdmin\Edit.cshtml" />
     <Content Include="Views\UsersAdmin\Delete.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
