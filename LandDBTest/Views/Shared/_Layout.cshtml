@@ -6,9 +6,11 @@
     <title>@ViewBag.Title - Beta</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+   
+  
 </head>
 <body>
+  
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -17,23 +19,42 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Uganda Property Reference", "Index", "Values", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Uganda Property Reference", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })<span class="label label-danger">BETA</span>
             </div>
           <div class="navbar-collapse collapse">
- @if (User.IsInRole("Admin"))
- {
-    <ul class="nav navbar-nav">
-      
-        <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
-        <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
-       
-    </ul>
- }
-        @Html.Partial("_LoginPartial")
+              <ul class="nav navbar-nav">
+                  <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                  <li>@Html.ActionLink("About Us", "About", "Home")</li>
+                  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services<b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                          <li>@Html.ActionLink("Property Market Statistics", "PriceStat", "Home")</li>
+                          <li class="divider"></li>
+                          <li>@Html.ActionLink("Property Price Index","PriceIndex","Home")</li>
+                          <li class="divider"></li>
+                          <li><a href="#">Effect of Infrastructure Projects</a></li>
+                      </ul>
+                  </li>
+                  @if (User.IsInRole("Admin"))
+                  {
+
+
+                      <li>@Html.ActionLink("Users", "Index", "UsersAdmin")</li>
+                              <li>@Html.ActionLink("Roles", "Index", "RolesAdmin")</li>
+
+
+                  }
+
+              </ul>
+
+                  @Html.Partial("_LoginPartial")
+              
     </div>
        
         </div>
     </div>
+    <h5 class="text-primary">This is a new service – your feedback will help us to improve it.</h5>
+ 
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -46,5 +67,12 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+        $('ul.nav li.dropdown').hover(function () {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(200);
+        }, function () {
+            $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(200);
+        });
+    </script>
 </body>
 </html>

@@ -20,11 +20,16 @@ namespace LandDBTest.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult PriceIndex()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
+        public ActionResult PriceStat()
+        {
+            return View();
+        }
+       
     }
 }

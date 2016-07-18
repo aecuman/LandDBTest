@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "PriceStat";
+}
+<style type="text/css">
+   
+</style>
+<h2>Property Market Statistics</h2>
+<div class="jumbotron">
+    <h5> This is an ongoing compilation of titled property market values in Uganda. It is extracted from the property transfer records (Stamp Duty Payments Registry) at the Ministry of Lands, Housing and Urban Development from 2013. This is in form of the current fair values as derived from sales agreements, and transfer transactions of the properties.</h5>
+    <h5> This register is an ongoing compilation that gives transaction records by village, block, land size and use.</h5>
+    <h5>To fully benefit from the information provided by this register, please have a copy of your certificate of title on hand as you search the database</h5>
+
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="col-lg-offset-4">
+      
+        <a href="/Values/Index" class="btn btn-info">Search Database Now&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></a>
+    </div>
+}
+
+else
+{
+    <div>
+        <h2 class="text-danger">
+           
+            Sign Up to search database
+            @Html.ActionLink("Sign Up", "Register", "Account")
+        </h2>
+    </div>
+
+}
+
+
+<footer>
+    <small></small>
+    <h5>Disclaimer</h5>
+    <h6>
+        • The majority of the property sales transactions registered therein are a representation of the true property market of Uganda. However it does not take into consideration neither does it separate the sales transactions that are carried out under duress or distress from normal arms length willing buyer willing seller market transactions.
+    </h6>
+    <h6>  •	The information given herein is provided on the understanding that its accuracy is not guaranteed and that no liability whatsoever can be accepted if loss of damage results from any error, omission, or misstatement therein.</h6>
+
+
+
+</footer>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

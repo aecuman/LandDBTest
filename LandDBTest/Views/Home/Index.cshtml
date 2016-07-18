@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div class="item">
-                <h3 class="titlecarousel"> Land Comparable Prices</h3>
+                <h3 class="titlecarousel"> Property Market Statistics</h3>
                 <img src="~/Pictures/priceTable.svg" alt="Package Management" class="img-responsive ctr" />
                 <div class="carousel-caption">
                     <p>
@@ -76,7 +76,9 @@
 </div>
 <div class="col-lg-4 vertical-center" style="background-color:white">
     <div class="row col-lg-offset-1">
-       
+       @if (!User.Identity.IsAuthenticated)
+       {
+
             <h2 class="text-center">Sign In</h2>
             <hr />
             <section>
@@ -111,7 +113,7 @@
                                 <div class="col-md-offset-4 col-md-8">
                                     <input type="submit" value="Log in" class="btn btn-default" />
                                     <p>
-                                        @Html.ActionLink("Register as a new user", "Register","Account")
+                                        @Html.ActionLink("Register as a new user", "Register", "Account")
                                     </p>
                                 </div>
 
@@ -123,8 +125,20 @@
                                                 @Html.ActionLink("Forgot your password?", "ForgotPassword")
                                             </p>*@
                 }
+                
             </section>
-            
+       }else
+        {
+        <h3>
+            Services
+        </h3>
+        <hr />
+        <a href="/Values/Index" class="btn btn-info">Price Database&nbsp;<span class="glyphicon glyphicon-arrow-right"></span></a>
+        <h6>
+            <a href="#" class="btn btn-info btn">Price Trends &nbsp;&nbsp;&nbsp;&nbsp;<i class="glyphicon glyphicon-ban-circle text-warning"></i></a>
+        </h6>
+       }
+
         </div>
 </div>
 

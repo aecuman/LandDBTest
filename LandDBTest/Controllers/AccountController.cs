@@ -179,7 +179,7 @@ namespace LandDBTest.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Values");
+                    return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
@@ -408,7 +408,7 @@ namespace LandDBTest.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -465,7 +465,7 @@ namespace LandDBTest.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Index", "Values");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult
