@@ -6142,7 +6142,7 @@ body.modal-open,
 
 .carousel-indicators {
   position: absolute;
-  bottom: 100px;
+  bottom: 20px;
   left: 50%;
   z-index: 15;
   width: 60%;
@@ -6171,9 +6171,9 @@ body.modal-open,
 }
 
 .carousel-caption {
-
-  right: 15%;
-
+ position: absolute;
+    right: 15%;
+    bottom: 20px;
   left: 15%;
   z-index: 10;
   padding-top: 20px;
@@ -6201,7 +6201,7 @@ body.modal-open,
     padding-bottom: 30px;
   }
   .carousel-indicators {
-    bottom: 100px;
+    bottom: 20px;
   }
 }
 .titlecarousel{
