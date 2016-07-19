@@ -293,7 +293,7 @@
     <Content Include="Pictures\pic 01.jpg" />
     <Content Include="Pictures\pic 02.jpg" />
     <Content Include="Pictures\pic 03.jpg" />
-    <Content Include="Pictures\priceTable.svg" />
+    <Content Include="Pictures\Table.jpg" />
     <Content Include="Pictures\trendGraph.svg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -376,6 +376,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\PriceIndex.cshtml" />
     <Content Include="Views\Home\PriceStat.cshtml" />
+    <Content Include="Views\Home\LearnMore.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
