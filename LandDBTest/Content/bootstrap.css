@@ -6173,7 +6173,7 @@ body.modal-open,
 .carousel-caption {
  position: absolute;
     right: 15%;
-    bottom: 20px;
+    bottom: 80px;
   left: 15%;
   z-index: 10;
   padding-top: 20px;
@@ -6198,12 +6198,26 @@ body.modal-open,
   .carousel-caption {
     right: 20%;
     left: 20%;
-    padding-bottom: 30px;
+    bottom:50px;
   }
   .carousel-indicators {
     bottom: 20px;
   }
 }
+@media only screen and (max-width : 480px) {
+    table{
+        font-size:x-small
+    }
+    h2{
+        font-size:medium
+    }
+    .carousel-caption {
+        right: 20%;
+        left: 20%;
+       bottom:25px;
+    }
+
+    }
 .titlecarousel{
     font-weight:bold;
     color:#FF7915;

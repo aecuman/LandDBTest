@@ -30,7 +30,7 @@
                       <ul class="dropdown-menu">
                           <li><a href="/Values/Index">Sales Price Database</a></li>                 
                           <li class="divider"></li>
-                          <li><a href="#">Effect of Infrastructure Projects</a></li>
+                          <li><a href="#">Land Affected by Infrastructure Projects</a></li>
                       </ul>
                   </li>
                   @if (User.IsInRole("Admin"))
@@ -55,9 +55,17 @@
  
     <div class="container body-content">
         @RenderBody()
+        
         <hr />
         <footer>
-        
+          
+                <small>
+                    Disclaimer
+                    
+                        • The majority of the property sales transactions registered therein are a representation of the true property market of Uganda. However it does not take into consideration neither does it separate the sales transactions that are carried out under duress or distress from normal arm’s length willing buyer willing seller market transactions.
+                       •The information given herein is provided on the understanding that its accuracy is not guaranteed and that no liability whatsoever can be accepted if loss of damage results from any error, omission, or misstatement therein.
+                </small>
+           
             <p>&copy; @DateTime.Now.Year - Uganda Property Reference</p>
         </footer>
     </div>
