@@ -6185,6 +6185,15 @@ body.modal-open,
 .carousel-caption .btn {
   text-shadow: none;
 }
+.firstcap{
+    bottom:52px;
+}
+.secondcap{
+    bottom:71px;
+}
+.thirdcap{
+bottom:12px;
+}
 @media screen and (min-width: 768px) {
      h1{
       font-size:60px;
@@ -6206,12 +6215,16 @@ body.modal-open,
     bottom:50px;
   }
   h2{
-        font-size:smaller;
+        font-size:x-large;
     }
- h1{
-      font-size:30px;
-  }
- 
+
+
+.secondcap{
+    bottom:47px;
+}
+.thirdcap{
+bottom:5px;
+}
   .carousel-indicators {
     bottom: 20px;
   }
@@ -6221,9 +6234,9 @@ body.modal-open,
         font-size:x-small
     }
     h2{
-        font-size:medium
+        font-size:small
     }
-    .h1{
+    h1{
       font-size:30px;
   }
     .carousel-caption {
@@ -6231,8 +6244,40 @@ body.modal-open,
         left: 20%;
        bottom:25px;
     }
+    .firstcap{
+    bottom:30px;
+}
+.secondcap{
+    bottom:37px;
+}
+.thirdcap{
+bottom:-17px;
+}
+.carousel-indicators {
+    bottom: -5px;
+  }
 
     }
+@media only screen and (max-width : 320px) {
+   h2{
+        font-size:smaller
+    }
+    h1{
+      font-size:23px;
+  } 
+        .firstcap{
+    bottom:7px;
+}
+.secondcap{
+    bottom:18px;
+}
+.thirdcap{
+bottom:-17px;
+} 
+   
+    }
+
+
 .titlecarousel{
     font-weight:bold;
     color:#FF7915;

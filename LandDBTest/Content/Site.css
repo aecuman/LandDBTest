@@ -25,3 +25,8 @@ textarea {
 .ctr{
     margin:0 auto;
 }
+@media only screen and (max-width : 320px) {
+    body {
+        padding-top: 70px;
+    }
+}
