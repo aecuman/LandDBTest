@@ -6185,8 +6185,13 @@ body.modal-open,
 .carousel-caption .btn {
   text-shadow: none;
 }
-
 @media screen and (min-width: 768px) {
+     h1{
+      font-size:60px;
+  }
+
+}
+@media screen and (max-width: 768px) {
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
@@ -6200,9 +6205,13 @@ body.modal-open,
     left: 20%;
     bottom:50px;
   }
-   h1, .h1 {
-        font-size: 30px;
+  h2{
+        font-size:smaller;
     }
+ h1{
+      font-size:30px;
+  }
+ 
   .carousel-indicators {
     bottom: 20px;
   }
@@ -6214,7 +6223,9 @@ body.modal-open,
     h2{
         font-size:medium
     }
-   
+    .h1{
+      font-size:30px;
+  }
     .carousel-caption {
         right: 20%;
         left: 20%;
