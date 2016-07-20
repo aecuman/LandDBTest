@@ -289,12 +289,12 @@
       <LastGenOutput>Value1.cs</LastGenOutput>
       <DependentUpon>landdb.edmx</DependentUpon>
     </Content>
-    <Content Include="Pictures\indexMap.png" />
+    <Content Include="Pictures\indexMa.png" />
     <Content Include="Pictures\pic 01.jpg" />
     <Content Include="Pictures\pic 02.jpg" />
     <Content Include="Pictures\pic 03.jpg" />
-    <Content Include="Pictures\Table.png" />
-    <Content Include="Pictures\trendGraph.png" />
+    <Content Include="Pictures\Tabl.png" />
+    <Content Include="Pictures\trendGrap.png" />
     <Content Include="Pictures\UgandaMap.svg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
