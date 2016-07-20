@@ -511,7 +511,7 @@ h6 {
 
 h1,
 .h1 {
-  font-size: 36px;
+  font-size: 60px;
 }
 
 h2,
@@ -6200,6 +6200,9 @@ body.modal-open,
     left: 20%;
     bottom:50px;
   }
+   h1, .h1 {
+        font-size: 30px;
+    }
   .carousel-indicators {
     bottom: 20px;
   }
@@ -6211,6 +6214,7 @@ body.modal-open,
     h2{
         font-size:medium
     }
+   
     .carousel-caption {
         right: 20%;
         left: 20%;
