@@ -223,6 +223,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+.center-table
+{
+  margin: 0 auto !important;
+  float: none !important;
+}
 
 @media print {
   * {
@@ -6192,7 +6197,7 @@ body.modal-open,
     bottom:71px;
 }
 .thirdcap{
-bottom:12px;
+bottom:29px;
 }
 @media screen and (min-width: 768px) {
      h1{
@@ -6223,7 +6228,7 @@ bottom:12px;
     bottom:47px;
 }
 .thirdcap{
-bottom:5px;
+bottom:21px;
 }
   .carousel-indicators {
     bottom: 20px;
@@ -6251,7 +6256,7 @@ bottom:5px;
     bottom:37px;
 }
 .thirdcap{
-bottom:-17px;
+bottom:5px;
 }
 .carousel-indicators {
     bottom: -5px;
@@ -6272,7 +6277,7 @@ bottom:-17px;
     bottom:18px;
 }
 .thirdcap{
-bottom:-17px;
+bottom:5px;
 } 
    
     }
