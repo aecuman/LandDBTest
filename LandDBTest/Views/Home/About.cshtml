@@ -2,6 +2,36 @@
 @{
     ViewBag.Title = "About";
 }
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
 
+    #map {
+        height: 100%;
+    }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<div id="map" style="border: 2px solid #3872ac;"></div>
+<script>
+
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: { lat: 1.3733, lng: 32.290 }
+        });
+
+        // NOTE: This uses cross-domain XHR, and may not work on older browsers.
+        map.data.loadGeoJson(
+            '/Content/uganda.json');
+      }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUA9fHwmoHzOplh6vx1IxOO66YzH0IQWM&callback=initMap">
+</script>
 <h2>About</h2>
 

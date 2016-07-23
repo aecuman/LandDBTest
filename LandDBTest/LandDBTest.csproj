@@ -378,7 +378,7 @@
     <Content Include="Views\Home\PriceIndex.cshtml" />
     <Content Include="Views\Home\PriceStat.cshtml" />
     <Content Include="Views\Home\LearnMore.cshtml" />
-    <Content Include="static\uganda.json" />
+    <Content Include="Content\uganda.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -393,6 +393,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="components\" />
+    <Folder Include="static\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
